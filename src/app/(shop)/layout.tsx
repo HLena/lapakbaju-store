@@ -7,10 +7,10 @@ export default function ShopLayout({
 }>) {
   return (
     <>
-      <header>
+      <header className='relative'>
         <Navbar/>
       </header>
-      <main className="min-h-screen bg-red-500">
+      <main className="min-h-screen bg-white pt-16">
         { children }
       </main>
     </>
