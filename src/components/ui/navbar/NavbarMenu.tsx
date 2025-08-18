@@ -7,7 +7,7 @@ interface Props{
   }[]
 }
 
-const NabvarMenu = ({menu}: Props) => {
+const NavbarMenu = ({menu}: Props) => {
   return (
     <nav className='absolute right-0 top-16 bg-white w-full  md:w-96 border'>
       <motion.ul
@@ -34,4 +34,4 @@ const NabvarMenu = ({menu}: Props) => {
   )
 }
 
-export default NabvarMenu
+export default NavbarMenu

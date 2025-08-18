@@ -9,13 +9,13 @@ interface Props{
 
 const Navigation = ({menu}: Props) => {
   return (
-    <nav className='flex-row capitalize hidden md:flex'>
+    <nav className='flex-row capitalize hidden md:flex text-sm'>
         {
           menu.map((m, i) => (
             <Link 
               key={i}
               href={m.path}
-              className="p-2 text-gray-500 cursor-pointer hover:font-semibold"
+              className="p-2 text-gray-600 cursor-pointer hover:font-semibold"
             >{m.name}
             </Link>
           ))
