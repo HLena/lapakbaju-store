@@ -10,9 +10,10 @@ export default function ShopLayout({
       <header className='relative'>
         <Navbar/>
       </header>
-      <main className="min-h-screen bg-white pt-16">
+      <main className="min-h-screen pt-16">
         { children }
       </main>
+      
     </>
   );
 }
