@@ -1,6 +1,7 @@
 import Pagination from '@/components/ui/Pagination';
 import CardProduct from '../../../../components/product/CardProduct';
 import { redirect } from "next/navigation";
+import Title from '@/components/ui/title/Title';
 
 
 const products: Product[] = [
@@ -349,18 +350,15 @@ const ProductPage = async ({ params, searchParams }: ProductPageProps) => {
   const { slug } = await params;
   const { page } = await searchParams;
 
-  console.log(slug, '------', page)
+  // console.log(slug, '------', page)
 
   if(!page) redirect(`/product/${slug}?page=1`)
   
-  // const { items, totalPages } = paginate(products, page, pageSize);
+
   return (
-    <div className='bg-white py-16'>
-      <div className="flex-1 h-32 p-6">
-        <span className="text-gray-400">Main Page &gt; Category &gt; Pants </span>
-        <h1 className="py-4 text-3xl font-bold text-gray-600">Clothes</h1>
-      </div>
-      <div className="grid gap-8 pb-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 w-5/6 m-auto 2xl:w-4/6">
+    <div className='grow'>
+      <Title/>
+      <div className="mx-4 grid gap-8 pb-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {
           products.map(product => (
             <CardProduct key={product.id} {...product}/>
