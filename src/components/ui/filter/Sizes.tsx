@@ -8,14 +8,14 @@ const sizes: string[] = [
   "XXXL"  // 3 Extra Large
 ];
 
-const SizeFilter = () => {
+const Sizes = () => {
   return (
-    <div className="grid grid-cols-3 gap-3">
+    <div className="flex flex-wrap gap-2">
       {
         sizes.map(size => (
           <div 
             key={size} 
-            className="p-1 cursor-pointer border border-gray-300 rounded-md text-sm text-center hover:bg-violet-600 hover:text-white">
+            className="p-1 cursor-pointer border border-gray-300 rounded-md text-sm text-center text-gray-500 hover:bg-violet-600 hover:text-white min-w-12">
             {size}
           </div>
         ))
@@ -24,4 +24,4 @@ const SizeFilter = () => {
   )
 }
 
-export default SizeFilter
+export default Sizes

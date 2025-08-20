@@ -1,9 +1,9 @@
 'use client';
 
-import ColorFilter from "./ColorFilter";
+import Colors from "./Colors";
 import FilterSection from "./FilterSection"
 import PriceRange from "./PriceRange";
-import SizeFilter from "./SizeFilter";
+import Sizes from "./Sizes";
 import { AnimatePresence, motion } from 'motion/react';
 import { useUIStore } from "@/store";
 
@@ -55,7 +55,7 @@ const FilterPanel = () => {
                         clothingCategories.map(category => (
                           <li key={category}>
                             <label className="text-gray-700 text-sm cursor-pointer">
-                              <input type="checkbox" value="blouses" className="mr-2"/>
+                              <input type="checkbox" value={category} className="mr-2"/>
                               {category}
                             </label>
                           </li>
@@ -69,11 +69,11 @@ const FilterPanel = () => {
                   </FilterSection>
 
                   <FilterSection title="Colors">
-                    <ColorFilter/>
+                    <Colors/>
                   </FilterSection>
 
                   <FilterSection title="Size">
-                    <SizeFilter/>
+                    <Sizes/>
                   </FilterSection>
                 </div>
               </motion.aside>
@@ -102,11 +102,11 @@ const FilterPanel = () => {
           </FilterSection>
 
           <FilterSection title="Colors">
-            <ColorFilter/>
+            <Colors/>
           </FilterSection>
 
           <FilterSection title="Size">
-            <SizeFilter/>
+            <Sizes/>
           </FilterSection>
       </aside>
     </>

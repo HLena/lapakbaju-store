@@ -1,36 +1,48 @@
 import { motion } from 'motion/react';
-import { nav } from 'motion/react-client';
+import Image from 'next/image';
+import Link from 'next/link';
+import { IoClose } from 'react-icons/io5';
 interface Props{
   menu: {
     name: string,
     path: string
-  }[]
+  }[],
+  toggleNavbar: () => void
+
 }
 
-const NavbarMenu = ({menu}: Props) => {
+const NavbarMenu = ({menu, toggleNavbar}: Props) => {
   return (
-    <nav className='absolute right-0 top-16 bg-white w-full  md:w-96 border'>
-      <motion.ul
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
-        transition={{ duration: 0.3 }}
-      >
+    <motion.div
+      className="fixed inset-0 z-20 bg-black/50 lg:hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={ toggleNavbar }
+    >
+      <nav className='absolute flex flex-col left-0 top-0 bg-white w-5/6 max-w-80 md:w-96 h-screen lg:hidden'>
+        <div className='py-3'>
+          <Image 
+            src={"/images/logo.png"} 
+            alt="logo" 
+            height={140} 
+            width={140}
+            className='m-auto'
+          />
+        </div>
         {
           menu.map((m, i) => (
-            <motion.li 
-              key={i}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ delay: i * 0.1 }}
-              className="p-2 text-gray-500"
-            >{m.name}
-            </motion.li>
+            <Link 
+              key={m.path} 
+              href={m.path}
+              className='text-center py-2 capitalize text-gray-700'
+            >
+              {m.name}
+            </Link>
           ))
         }
-      </motion.ul>
-    </nav>
+      </nav>
+    </motion.div>
   )
 }
 

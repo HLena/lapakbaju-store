@@ -1,17 +1,18 @@
+import { Product } from '@/interfaces';
 import Image from 'next/image';
 import Link from 'next/link';
 import { LuShoppingCart } from "react-icons/lu";
 
 
-const CardProduct = ({name, url, price, id}: Product) => {
+const CardProduct = ({title, images, price, slug }: Product) => {
   return (
-    <Link href={`/product/${id}`}>
+    <Link href={`/product/${slug}`}>
       <div className='flex-1 bg-white rounded-xl border shadow-md'>
         <div className='flex justify-center bg-gray-100 rounded-t-xl'>
           <Image src="/images/products/black-jacket.webp" alt='black-jacket' width={200} height={200}/>
         </div>
         <div className='p-3'>
-          <p className='text-gray-600 font-semibold text-sm capitalize'>{name}</p>
+          <p className='text-gray-600 font-semibold text-sm capitalize'>{title}</p>
           <div className='flex justify-between items-center'>
             <p className='flex flex-col leading-3'>
               <small className='text-gray-400 text-xs'>Price</small>
