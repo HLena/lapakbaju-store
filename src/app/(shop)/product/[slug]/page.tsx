@@ -1,375 +1,84 @@
-import Pagination from '@/components/ui/Pagination';
-import CardProduct from '../../../../components/product/CardProduct';
-import { redirect } from "next/navigation";
-import Title from '@/components/ui/title/Title';
-
-
-const products: Product[] = [
-  {
-    name: "Camiseta Oversize",
-    id: "p001",
-    url: "https://example.com/products/p001",
-    category: ["Ropa", "Camisetas"],
-    price: 89.9,
-    discount: 10,
-    sizes: ["S", "M", "L", "XL"]
-  },
-  {
-    name: "Zapatillas Running",
-    id: "p002",
-    url: "https://example.com/products/p002",
-    category: ["Calzado", "Deporte"],
-    price: 299.99,
-    discount: 15,
-    sizes: ["38", "39", "40", "41", "42", "43"]
-  },
-  {
-    name: "Chaqueta Denim",
-    id: "p003",
-    url: "https://example.com/products/p003",
-    category: ["Ropa", "Chaquetas"],
-    price: 199.5,
-    discount: 0,
-    sizes: ["S", "M", "L"]
-  },
-  {
-    name: "Mochila Urbana",
-    id: "p004",
-    url: "https://example.com/products/p004",
-    category: ["Accesorios", "Bolsos"],
-    price: 159.0,
-    discount: 5,
-    sizes: []
-  },
-  {
-    name: "Pantalón Cargo",
-    id: "p005",
-    url: "https://example.com/products/p005",
-    category: ["Ropa", "Pantalones"],
-    price: 129.9,
-    discount: 20,
-    sizes: ["30", "32", "34", "36"]
-  },
-  {
-    name: "Sudadera Hoodie",
-    id: "p006",
-    url: "https://example.com/products/p006",
-    category: ["Ropa", "Sudaderas"],
-    price: 149.99,
-    discount: 10,
-    sizes: ["S", "M", "L", "XL", "XXL"]
-  },
-  {
-    name: "Botas de Cuero",
-    id: "p007",
-    url: "https://example.com/products/p007",
-    category: ["Calzado", "Casual"],
-    price: 349.0,
-    discount: 0,
-    sizes: ["39", "40", "41", "42", "43", "44"]
-  },
-  {
-    name: "Gorra Snapback",
-    id: "p008",
-    url: "https://example.com/products/p008",
-    category: ["Accesorios", "Gorras"],
-    price: 59.9,
-    discount: 5,
-    sizes: []
-  },
-  {
-    name: "Vestido Floral",
-    id: "p009",
-    url: "https://example.com/products/p009",
-    category: ["Ropa", "Vestidos"],
-    price: 179.0,
-    discount: 25,
-    sizes: ["S", "M", "L"]
-  },
-  {
-    name: "Reloj Minimalista",
-    id: "p010",
-    url: "https://example.com/products/p010",
-    category: ["Accesorios", "Relojes"],
-    price: 499.99,
-    discount: 10,
-    sizes: []
-  },
-  {
-    name: "Camiseta Oversize",
-    id: "p011",
-    url: "https://example.com/products/p001",
-    category: ["Ropa", "Camisetas"],
-    price: 89.9,
-    discount: 10,
-    sizes: ["S", "M", "L", "XL"]
-  },
-  {
-    name: "Zapatillas Running",
-    id: "p012",
-    url: "https://example.com/products/p002",
-    category: ["Calzado", "Deporte"],
-    price: 299.99,
-    discount: 15,
-    sizes: ["38", "39", "40", "41", "42", "43"]
-  },
-  {
-    name: "Chaqueta Denim",
-    id: "p013",
-    url: "https://example.com/products/p003",
-    category: ["Ropa", "Chaquetas"],
-    price: 199.5,
-    discount: 0,
-    sizes: ["S", "M", "L"]
-  },
-  {
-    name: "Mochila Urbana",
-    id: "p014",
-    url: "https://example.com/products/p004",
-    category: ["Accesorios", "Bolsos"],
-    price: 159.0,
-    discount: 5,
-    sizes: []
-  },
-  {
-    name: "Pantalón Cargo",
-    id: "p015",
-    url: "https://example.com/products/p005",
-    category: ["Ropa", "Pantalones"],
-    price: 129.9,
-    discount: 20,
-    sizes: ["30", "32", "34", "36"]
-  },
-  {
-    name: "Sudadera Hoodie",
-    id: "p016",
-    url: "https://example.com/products/p006",
-    category: ["Ropa", "Sudaderas"],
-    price: 149.99,
-    discount: 10,
-    sizes: ["S", "M", "L", "XL", "XXL"]
-  },
-  {
-    name: "Botas de Cuero",
-    id: "p017",
-    url: "https://example.com/products/p007",
-    category: ["Calzado", "Casual"],
-    price: 349.0,
-    discount: 0,
-    sizes: ["39", "40", "41", "42", "43", "44"]
-  },
-  {
-    name: "Gorra Snapback",
-    id: "p018",
-    url: "https://example.com/products/p008",
-    category: ["Accesorios", "Gorras"],
-    price: 59.9,
-    discount: 5,
-    sizes: []
-  },
-  {
-    name: "Vestido Floral",
-    id: "p019",
-    url: "https://example.com/products/p009",
-    category: ["Ropa", "Vestidos"],
-    price: 179.0,
-    discount: 25,
-    sizes: ["S", "M", "L"]
-  },
-  {
-    name: "Reloj Minimalista",
-    id: "p020",
-    url: "https://example.com/products/p010",
-    category: ["Accesorios", "Relojes"],
-    price: 499.99,
-    discount: 10,
-    sizes: []
-  },
-  {
-    name: "Camiseta Oversize",
-    id: "p021",
-    url: "https://example.com/products/p001",
-    category: ["Ropa", "Camisetas"],
-    price: 89.9,
-    discount: 10,
-    sizes: ["S", "M", "L", "XL"]
-  },
-  {
-    name: "Zapatillas Running",
-    id: "p022",
-    url: "https://example.com/products/p002",
-    category: ["Calzado", "Deporte"],
-    price: 299.99,
-    discount: 15,
-    sizes: ["38", "39", "40", "41", "42", "43"]
-  },
-  {
-    name: "Chaqueta Denim",
-    id: "p023",
-    url: "https://example.com/products/p003",
-    category: ["Ropa", "Chaquetas"],
-    price: 199.5,
-    discount: 0,
-    sizes: ["S", "M", "L"]
-  },
-  {
-    name: "Mochila Urbana",
-    id: "p024",
-    url: "https://example.com/products/p004",
-    category: ["Accesorios", "Bolsos"],
-    price: 159.0,
-    discount: 5,
-    sizes: []
-  },
-  {
-    name: "Pantalón Cargo",
-    id: "p025",
-    url: "https://example.com/products/p005",
-    category: ["Ropa", "Pantalones"],
-    price: 129.9,
-    discount: 20,
-    sizes: ["30", "32", "34", "36"]
-  },
-  {
-    name: "Sudadera Hoodie",
-    id: "p026",
-    url: "https://example.com/products/p006",
-    category: ["Ropa", "Sudaderas"],
-    price: 149.99,
-    discount: 10,
-    sizes: ["S", "M", "L", "XL", "XXL"]
-  },
-  {
-    name: "Botas de Cuero",
-    id: "p027",
-    url: "https://example.com/products/p007",
-    category: ["Calzado", "Casual"],
-    price: 349.0,
-    discount: 0,
-    sizes: ["39", "40", "41", "42", "43", "44"]
-  },
-  {
-    name: "Gorra Snapback",
-    id: "p028",
-    url: "https://example.com/products/p008",
-    category: ["Accesorios", "Gorras"],
-    price: 59.9,
-    discount: 5,
-    sizes: []
-  },
-  {
-    name: "Vestido Floral",
-    id: "p029",
-    url: "https://example.com/products/p009",
-    category: ["Ropa", "Vestidos"],
-    price: 179.0,
-    discount: 25,
-    sizes: ["S", "M", "L"]
-  },
-  {
-    name: "Reloj Minimalista",
-    id: "p030",
-    url: "https://example.com/products/p010",
-    category: ["Accesorios", "Relojes"],
-    price: 499.99,
-    discount: 10,
-    sizes: []
-  },
-  {
-    name: "Camiseta Oversize",
-    id: "p031",
-    url: "https://example.com/products/p001",
-    category: ["Ropa", "Camisetas"],
-    price: 89.9,
-    discount: 10,
-    sizes: ["S", "M", "L", "XL"]
-  },
-  {
-    name: "Zapatillas Running",
-    id: "p032",
-    url: "https://example.com/products/p002",
-    category: ["Calzado", "Deporte"],
-    price: 299.99,
-    discount: 15,
-    sizes: ["38", "39", "40", "41", "42", "43"]
-  },
-  {
-    name: "Chaqueta Denim",
-    id: "p033",
-    url: "https://example.com/products/p003",
-    category: ["Ropa", "Chaquetas"],
-    price: 199.5,
-    discount: 0,
-    sizes: ["S", "M", "L"]
-  },
-  {
-    name: "Mochila Urbana",
-    id: "p034",
-    url: "https://example.com/products/p004",
-    category: ["Accesorios", "Bolsos"],
-    price: 159.0,
-    discount: 5,
-    sizes: []
-  },
-  {
-    name: "Pantalón Cargo",
-    id: "p035",
-    url: "https://example.com/products/p005",
-    category: ["Ropa", "Pantalones"],
-    price: 129.9,
-    discount: 20,
-    sizes: ["30", "32", "34", "36"]
-  },
-];
-
-const paginate = (items: Product[], page: number, pageSize: number) => {
-  const totalItems = items.length;
-  const totalPages = Math.ceil(totalItems / pageSize);
-
-  const start = (page - 1) * pageSize;
-  const end = start + pageSize;
-
-  return {
-    items: items.slice(start, end),
-    page,
-    totalItems,
-    totalPages
-  }
-
-}
+import { CiCreditCard2 } from "react-icons/ci";
+import { FaStar } from "react-icons/fa";
+import { FiShoppingCart } from "react-icons/fi";
+import { LuMessageCircleMore } from "react-icons/lu";
+import { CiBoxes } from "react-icons/ci";
+import { LiaShippingFastSolid } from "react-icons/lia";
+import { CiShoppingTag } from "react-icons/ci";
+import { Colors, ImageSlider, QuantitySelector, Sizes } from "@/components";
 
 interface ProductPageProps {
   params:  Promise<{ slug: string}>,
   searchParams: Promise<{ page?: string }>
 }
 
+const images = [
+  "/images/products/blouse-pink.webp",
+  "/images/products/blouse-blue.webp",
+  "/images/products/blouse-green.webp",
+]
+
 const ProductPage = async ({ params, searchParams }: ProductPageProps) => {
 
-  const pageSize = 10;
 
-  const { slug } = await params;
-  const { page } = await searchParams;
-
-  // console.log(slug, '------', page)
-
-  if(!page) redirect(`/product/${slug}?page=1`)
-  
 
   return (
-    <div className='grow'>
-      <Title/>
-      <div className="mx-4 grid gap-8 pb-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {
-          products.map(product => (
-            <CardProduct key={product.id} {...product}/>
-          ))
-        }
+    <div className='grow flex flex-col lg:flex-row'>
+      
+      <ImageSlider images={images}/>
+
+      <div className="flex-1/2 py-5 px-10">
+        <p className="text-gray-400 text-sm">
+          Shop / Wowen / Shirt
+        </p>
+        <h2 className="text-gray-800 text-2xl my-5">
+          Raven Top With <br />
+          Colored Leaves Design
+        </h2>
+
+        <p className="text-gray-500 my-4">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati magni sequi adipisci quo animi ullam eos illum repellendus ipsam beatae dignissimos praesentium excepturi minima, est odio dolor voluptas. Quisquam, fugit!</p>
+
+        {/* rating  and  comments */}
+        <div className="flex gap-4">
+          <div className="text-amber-400 flex gap-2 items-center">
+            <FaStar />
+            <FaStar />
+            <FaStar />
+            <FaStar />
+            <FaStar />
+            <span className="text-gray-400 text-sm">4.5</span>
+          </div>
+          <div className="flex gap-2 items-center text-gray-400">
+            <LuMessageCircleMore />
+            <span>120 comments</span>
+          </div>
+        </div>
+
+        <p className="text-gray-900 text-md my-3">Select Size</p>
+        <Sizes/>
+        <p className="text-gray-900 text-md my-3">Colours Available</p>
+        <Colors/>
+        <div className="flex gap-3 my-5">
+          {/* <button 
+            className="flex gap-2 items-center bg-violet-600 text-white  px-14 h-10 rounded-full"> 
+              <FiShoppingCart className="text-white" />
+              Add to Cart
+          </button> */}
+          <QuantitySelector/>
+          <p className="border py-2 px-3 rounded-full text-gray-800 font-semibold border-gray-300"> $ 65.00 </p>
+        </div>
+
+        <hr />
+        <div className="grid grid-cols-2">
+          <p className="flex items-center my-3 text-gray-600 text-sm"> <CiCreditCard2 className="mr-3 text-xl"/> Secure payment</p>
+          <p className="flex items-center my-3 text-gray-600 text-sm"> <CiShoppingTag className="mr-3 text-xl"/> Secure payment</p>
+          <p className="flex items-center my-3 text-gray-600 text-sm"> <LiaShippingFastSolid className="mr-3 text-xl"/> Secure payment</p>
+          <p className="flex items-center my-3 text-gray-600 text-sm"> <CiBoxes className="mr-3 text-xl"/> Secure payment</p>
+        </div>
+
+
       </div>
-      <Pagination paginationDetails={{
-        total: products.length,
-        take: 10,
-        skip: 0
-      }}/>
     </div>
   )
 }
