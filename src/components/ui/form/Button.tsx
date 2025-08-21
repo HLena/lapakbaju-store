@@ -14,7 +14,7 @@ const Button = ({label, className, onClick, type = "btn", href ="" }: Props) => 
       <Link
         href={ href } 
         onClick={ onClick }
-        className={`p-4 bg-violet-700 text-white rounded-lg w-full mb-4 text-sm text-center ${className}`}>
+        className={`block p-4 bg-violet-700 text-white rounded-lg w-full mb-4 text-sm text-center ${className}`}>
           {label}
       </Link>
     )

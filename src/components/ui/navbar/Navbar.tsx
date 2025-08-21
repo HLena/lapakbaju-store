@@ -36,7 +36,7 @@ const Navbar = () => {
 
   return (
       <div
-        className="fixed top-0 right-0 left-0 w-full h-16 bg-white flex justify-between items-center py-2 px-3 gap-3 border-b"
+        className="fixed top-0 right-0 left-0 w-full h-16 bg-white flex justify-between items-center py-2 px-3 gap-3 border-b z-100"
       >
         <div className="flex text-3xl text-purple-700 font-bold">
           <BiMenuAltLeft onClick={toggleNavbarMenu} className='md:hidden'/>
