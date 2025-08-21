@@ -1,8 +1,8 @@
-import { Inter, Montserrat_Alternates } from 'next/font/google';
+import { Inter, Poppins } from 'next/font/google';
 
 export const inter = Inter({subsets: ['latin']});
 
-export const nameFont = Montserrat_Alternates({
+export const nameFont = Poppins({
   subsets: ['latin'],
-  weight: ['500', '600']
+  weight: ['200','300', '500', '600']
 })
