@@ -12,7 +12,7 @@ export default function ShopLayout({
         <Navbar/>
       </header>
       <main className="min-h-screen pt-16 bg-white">
-        <div className="flex max-w-7xl m-auto min-h-screen">
+        <div className="flex max-w-7xl m-auto min-h-screen mt-10">
           { children }
         </div>
       </main>

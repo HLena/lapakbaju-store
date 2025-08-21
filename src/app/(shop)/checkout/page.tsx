@@ -31,7 +31,7 @@ export default function CheckoutPage() {
 
     <div className="px-4 w-full flex flex-col gap-4 justify-center text-left text-gray-800  md:flex-row">
       
-      <div className='mt-10 flex-1/2'>
+      <div className='md:p-4 flex-1/2'>
         <div className='flex justify-between'>
           <Subtitle title="Address"/>
           <Link href="/auth/login">
@@ -68,7 +68,7 @@ export default function CheckoutPage() {
 
         <p className='mb-4 text-sm'>Todas las transacciones son seguras y están encriptadas.</p>
       </div>
-      <div className='flex-1/2 md:pt-10 md:px-4 md:bg-gray-100'>
+      <div className='flex-1/2 md:p-4 md:bg-gray-50 rounded-lg  h-fit'>
 
         <SummaryOrder/>
 

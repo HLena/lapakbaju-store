@@ -13,7 +13,7 @@ const CartPage = () => {
           <ShoppinCartItem/>
         </div>
 
-      <div className="border p-4 flex flex-col lg:flex-1/3  rounded-md">
+      <div className="border p-4 flex flex-col lg:flex-1/3 rounded-md h-fit">
         <p className="text-gray-800 flex justify-between">
           <span className="text-md">Total</span>
           <span className="text-xl font-black">$14.50</span>
