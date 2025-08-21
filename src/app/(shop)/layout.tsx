@@ -16,6 +16,9 @@ export default function ShopLayout({
           { children }
         </div>
       </main>
+      <footer className="p-4 h-48 bg-violet-700">
+
+      </footer>
     </>
   );
 }
