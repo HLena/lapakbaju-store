@@ -1,11 +1,10 @@
 import { CiCreditCard2 } from "react-icons/ci";
 import { FaStar } from "react-icons/fa";
-import { FiShoppingCart } from "react-icons/fi";
 import { LuMessageCircleMore } from "react-icons/lu";
 import { CiBoxes } from "react-icons/ci";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { CiShoppingTag } from "react-icons/ci";
-import { Colors, ImageSlider, QuantitySelector, Sizes } from "@/components";
+import { ColorSelector, ImageSlider, QuantitySelector, SizesSelector } from "@/components";
 
 interface ProductPageProps {
   params:  Promise<{ slug: string}>,
@@ -56,16 +55,16 @@ const ProductPage = async ({ params, searchParams }: ProductPageProps) => {
         </div>
 
         <p className="text-gray-900 text-md my-3">Select Size</p>
-        <Sizes/>
+        <SizesSelector selectedSize="S"/>
         <p className="text-gray-900 text-md my-3">Colours Available</p>
-        <Colors/>
+        <ColorSelector/>
         <div className="flex gap-3 my-5">
           {/* <button 
             className="flex gap-2 items-center bg-violet-600 text-white  px-14 h-10 rounded-full"> 
               <FiShoppingCart className="text-white" />
               Add to Cart
           </button> */}
-          <QuantitySelector/>
+          <QuantitySelector quantity={0} />
           <p className="border py-2 px-3 rounded-full text-gray-800 font-semibold border-gray-300"> $ 65.00 </p>
         </div>
 

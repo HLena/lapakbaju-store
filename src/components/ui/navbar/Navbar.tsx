@@ -8,6 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Navigation from "./Navigation";
 import { BiMenuAltLeft } from 'react-icons/bi';
+import { AnimatePresence } from 'motion/react';
 
 const menuOptions = [
   {
@@ -55,10 +56,10 @@ const Navbar = () => {
             className="bg-purple-700 px-5 py-2 rounded-full cursor-pointer font-regular">
             Log in
           </Link>
-        </div>
+        </div> */}
         <AnimatePresence>
           {showNavbarMenu && <NabvarMenu menu={menuOptions} toggleNavbar={toggleNavbarMenu}/>}
-        </AnimatePresence> */}
+        </AnimatePresence>
 
         <div className='flex gap-3 text-violet-700 text-2xl items-center'>
           <Link href="/cart">

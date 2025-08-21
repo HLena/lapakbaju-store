@@ -1,9 +1,9 @@
 'use client';
 
-import Colors from "./Colors";
+import Colors from "./ColorSelector";
 import FilterSection from "./FilterSection"
 import PriceRange from "./PriceRange";
-import Sizes from "./Sizes";
+import Sizes from "./SizesSelector";
 import { AnimatePresence, motion } from 'motion/react';
 import { useUIStore } from "@/store";
 
