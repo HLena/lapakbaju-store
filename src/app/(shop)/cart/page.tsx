@@ -1,35 +1,63 @@
-import ShoppinCartItem from "@/components/cart/ShoppinCartItem"
+import { Panel } from "@/components"
+import ShoppinCartItem from "@/components/cart/CartItem"
 import Subtitle from "@/components/cart/Subtitle"
 import Link from "next/link"
 
 const CartPage = () => {
   return (
-    <div className="flex flex-col grow px-4 my-4 gap-6 lg:flex-row md:px-10">
-
-        <div className="flex flex-col lg:flex-2/3 gap-4 ">
-          <Subtitle title="shopping cart"/>
-          <ShoppinCartItem/>
-          <ShoppinCartItem/>
-          <ShoppinCartItem/>
+    <div className="min-h-screen m-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="mb-8">
+          <Subtitle title="Shopping Cart" />
+          <p className="text-gray-600 mt-2">Review your items and proceed to checkout</p>
         </div>
 
-      <div className="border p-4 flex flex-col lg:flex-1/3 rounded-md h-fit">
-        <p className="text-gray-800 flex justify-between">
-          <span className="text-md">Total</span>
-          <span className="text-xl font-black">$14.50</span>
-        </p>
-        
-        <hr className="my-4"/>
-        <p className="text-sm text-gray-400 font-light flex justify-between">
-        Impuesto incluido. Los gastos de envío se calculan en la pantalla de pago.
-        </p>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 ">
+          {/* Main Cart Items */}
+          <div className="lg:col-span-2 space-y-4">
+            {/* <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6"> */}
+              <ShoppinCartItem/>
+              <ShoppinCartItem/>
+              <ShoppinCartItem/>
+            {/* </div> */}
+          </div>
 
-        <Link href="/checkout" className="text-white text-center capitalize bg-violet-700 p-2 rounded-full text-sm mt-4">
-          proceed to checkout
-        </Link>
+          {/* Order Summary Sidebar */}
+          <div className="lg:col-span-1">
+            <Panel>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Order Summary</h3>
+              
+              <div className="space-y-3 mb-6">
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-600">Subtotal</span>
+                  <span className="text-gray-900 font-medium">$14.50</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-600">Shipping</span>
+                  <span className="text-gray-900 font-medium">Free</span>
+                </div>
+                <hr className="my-3" />
+                <div className="flex justify-between text-lg font-semibold">
+                  <span className="text-gray-900">Total</span>
+                  <span className="text-violet-600">$14.50</span>
+                </div>
+              </div>
+
+              <p className="text-xs text-gray-500 mb-4 text-center">
+                Impuesto incluido. Los gastos de envío se calculan en la pantalla de pago.
+              </p>
+
+              <Link 
+                href="/checkout" 
+                className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-violet-600 hover:bg-violet-700 transition-colors"
+              >
+                Proceed to Checkout
+              </Link>
+            </Panel>
+          </div>
+        </div>
       </div>
-
-
     </div>
   )
 }

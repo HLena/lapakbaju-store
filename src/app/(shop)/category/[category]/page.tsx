@@ -1,7 +1,6 @@
 import { CardProduct, Pagination, Title } from '@/components';
 import { Product } from '@/interfaces';
 
-
 const products: Product[] = [
   {
     title: "Camiseta Oversize",
@@ -43,7 +42,6 @@ const products: Product[] = [
     discount: 10,
     sizes: ["S", "M", "L", "XL", "XXL"]
   },
-  
   {
     title: "Gorra Snapback",
     slug: "p008",
@@ -76,7 +74,6 @@ const products: Product[] = [
     discount: 10,
     sizes: ["S", "M", "L", "XL"]
   },
-
   {
     title: "Chaqueta Denim",
     slug: "p013",
@@ -101,7 +98,6 @@ const products: Product[] = [
     discount: 10,
     sizes: ["S", "M", "L", "XL", "XXL"]
   },
-  
   {
     title: "Gorra Snapback",
     slug: "p018",
@@ -134,7 +130,6 @@ const products: Product[] = [
     discount: 10,
     sizes: ["S", "M", "L", "XL"]
   },
-  
   {
     title: "Chaqueta Denim",
     slug: "p023",
@@ -151,7 +146,6 @@ const products: Product[] = [
     discount: 5,
     sizes: []
   },
-
   {
     title: "Sudadera Hoodie",
     slug: "p026",
@@ -160,7 +154,6 @@ const products: Product[] = [
     discount: 10,
     sizes: ["S", "M", "L", "XL", "XXL"]
   },
- 
   {
     title: "Gorra Snapback",
     slug: "p028",
@@ -196,34 +189,43 @@ const products: Product[] = [
 ];
 
 interface PageProps {
-  params:  Promise<{ category : string}>,
+  params: Promise<{ category: string }>,
   searchParams: Promise<{ page?: string }>
 }
 
 const Page = async ({ params, searchParams }: PageProps) => {
-
   const pageSize = 10;
-
   const { category } = await params;
   const { page } = await searchParams;
 
-  // if(!page) redirect(`//${}?page=1`)
-  
   return (
-    <div className='grow'>
-      <Title title={category}/>
-      <div className="mx-4 grid gap-8 pb-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {
-          products.map(product => (
-            <CardProduct key={product.slug} {...product}/>
-          ))
-        }
+    <div className="min-h-screen m-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header with Title and Filter Button */}
+        <div className="mb-8">
+          <Title 
+            title={category} 
+            subtitle={`Discover our ${category} collection`}
+            showFilterButton={true}
+          />
+        </div>
+
+        {/* Products Grid */}
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mb-8">
+          {products.map(product => (
+            <CardProduct key={product.slug} {...product} />
+          ))}
+        </div>
+
+        {/* Pagination */}
+        <div className="flex justify-center">
+          <Pagination paginationDetails={{
+            total: products.length,
+            take: 10,
+            skip: 0
+          }} />
+        </div>
       </div>
-      <Pagination paginationDetails={{
-        total: products.length,
-        take: 10,
-        skip: 0
-      }}/>
     </div>
   )
 }
