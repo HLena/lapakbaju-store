@@ -4,7 +4,7 @@ import { useState } from "react"
 import Button from "../ui/form/Button"
 import Textbox from "../ui/form/Textbox"
 import Subtitle from "./Subtitle"
-import SummaryOrderItem from "./SummaryOrderItem"
+import SummaryOrderItem from "./OrderItem"
 
 const SummaryCart = () => {
 

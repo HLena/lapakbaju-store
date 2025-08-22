@@ -18,7 +18,7 @@ const SummaryOrderItem = ({
   image = "/images/products/blouse-pink.webp"
 }: SummaryOrderItemProps) => {
   return (
-    <div className="flex md:items-center gap-4 p-4 border border-gray-200 rounded-lg mb-4 hover:bg-gray-50 transition-colors">
+    <div className="flex md:items-center gap-4 p-4 border border-gray-200 rounded-lg  hover:bg-gray-50 transition-colors">
       <div className="w-20 h-20 md:w-16 md:h-16 relative overflow-hidden rounded-lg flex-shrink-0">
         <Image 
           src={image}
