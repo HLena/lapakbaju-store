@@ -1,4 +1,3 @@
-import Button from './ui/form/Button';
 export { default as Navbar } from "./ui/navbar/Navbar";
 export { default as NabvarMenu } from "./ui/navbar/NavbarMenu";
 export { default as Navigation } from "./ui/navbar/Navigation";
@@ -14,15 +13,18 @@ export { default as Title } from "./ui/title/Title";
 export { default as CardProduct } from "./product/CardProduct";
 export { default as ImageSlider } from "./product/ImageSlider";
 export { default as QuantitySelector } from "./product/QuantitySelector";
-
 export { default as Subtitle } from "./cart/Subtitle";
 export { default as SummaryOrder } from "./cart/SummaryOrder";
 
 export { default as Pagination } from "./ui/Pagination";
+export { default as Panel } from "./ui/Panel";
 
 export { default as Textbox } from "./ui/form/Textbox";
 export { default as Select } from "./ui/form/Select";
 export { default as Button } from "./ui/form/Button";
+
+export { default as OrdersTable } from "./order/OrdersTable";
+export { default as OrderCard } from "./order/OrderCard";
 
 
 
