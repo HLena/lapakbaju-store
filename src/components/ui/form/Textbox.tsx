@@ -18,7 +18,7 @@ const Textbox = ({
   onChange,
   name,
   className = ""
-} : Props ) => {
+}: Props) => {
 
   const [focused, setFocused] = useState(false);
   
@@ -31,10 +31,11 @@ const Textbox = ({
         onChange={onChange} 
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        className={`w-full capitalize text-gray-600 p-4 border border-gray-200 rounded-lg  mb-4 ${className}`}/>
-        <label
+        className={`w-full capitalize text-gray-900 p-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500 transition-colors ${className}`}
+      />
+      <label
         className={`absolute left-3 text-gray-500 transition-all duration-200 
-          ${focused || value ? "-top-2 text-xs bg-white px-1 text-blue-500" : "top-5 text-sm"}`}
+          ${focused || value ? "-top-2 text-xs bg-white px-1 text-violet-600 font-medium" : "top-3 text-sm"}`}
       >
         {label}
       </label>

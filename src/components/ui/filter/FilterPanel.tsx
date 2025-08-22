@@ -34,7 +34,7 @@ const FilterPanel = () => {
         {
           isFilterPanelOpen && (
             <motion.div
-              className="fixed inset-0 z-40 bg-black/50 lg:hidden"
+              className="fixed inset-0 z-150 bg-black/50 lg:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -81,7 +81,7 @@ const FilterPanel = () => {
           )
         }
       </AnimatePresence>
-      <aside className="hidden lg:block  lg:shrink-0 min-h-screen bg-white p-4 w-64 text-gray-800">
+      <aside className="hidden lg:block  lg:shrink-0 min-h-screen bg-white p-4 w-64 text-gray-800 shadow rounded-md">
           <FilterSection title="Category">
             <ul>
               {

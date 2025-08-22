@@ -68,13 +68,15 @@ const Navbar = () => {
               <FiShoppingCart />
             </div>
           </Link>
-          <Image 
-            src="/images/products/black-jacket.webp" 
-            alt="avatar" 
-            height={40} 
-            width={40} 
-            className='rounded-full border-gray-300 cursor-pointer'
-          />
+          <Link href="/account">
+            <Image 
+              src="/images/products/black-jacket.webp" 
+              alt="avatar" 
+              height={40} 
+              width={40} 
+              className='rounded-full border-gray-300 cursor-pointer'
+            />
+          </Link>
         </div>
         
       </div>

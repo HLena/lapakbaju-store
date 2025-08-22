@@ -22,32 +22,32 @@ const ShoppinCartItem = ({
   onRemove
 }: ShoppinCartItemProps) => {
   return (
-    <div className="flex items-start gap-4 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-      <div className="w-28 h-28 relative overflow-hidden rounded-lg flex-shrink-0 ">
+    <div className="flex items-start gap-4 p-4 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors bg-white">
+      <div className="w-28 h-28 relative overflow-hidden rounded-lg flex-shrink-0">
         <Image 
           src={image}
           alt={name}
           fill
-          sizes="100px"
+          sizes="112px"
           className="object-cover"
         />
       </div>
       
       <div className="flex-1">
-        <div className="flex justify-between items-start mb-2">
+        <div className="flex justify-between items-start mb-3">
           <h4 className="font-medium text-gray-900 text-sm leading-tight">
             {name}
           </h4>
           <button 
             onClick={onRemove}
-            className="rounded-full p-1 bg-gray-200 hover:bg-gray-300 transition-colors text-gray-600 hover:text-gray-800"
+            className="rounded-full p-1.5 bg-gray-200 hover:bg-gray-300 transition-colors text-gray-600 hover:text-gray-800"
             aria-label="Remove item"
           >
             <IoClose size={16} />
           </button>
         </div>
         
-        <p className="text-sm text-gray-500 mb-3">
+        <p className="text-sm text-gray-500 mb-4">
           {color} • Size {size}
         </p>
         
