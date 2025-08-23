@@ -1,4 +1,4 @@
-import { Title } from '@/components';
+import { Title, CategoryNavigation } from '@/components';
 
 export default function Home() {
   return (
@@ -7,7 +7,24 @@ export default function Home() {
         {/* Header */}
         <div className="mb-8 text-center">
           <Title title="Welcome to LapakBaju Store" className='text-center' subtitle='Discover the latest fashion trends and styles'/>
-          {/* <p className="text-gray-600 mt-2">Discover the latest fashion trends and styles</p> */}
+        </div>
+
+        {/* Categories Section */}
+        <div className="mb-12">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-semibold text-gray-900 mb-2">
+              Shop by Category
+            </h2>
+            <p className="text-gray-600">
+              Explore our curated collection by category
+            </p>
+          </div>
+          
+          <CategoryNavigation 
+            variant="grid" 
+            showCount={true}
+            className="mb-8"
+          />
         </div>
 
         {/* Main Content */}
@@ -23,16 +40,16 @@ export default function Home() {
           {/* Quick Actions */}
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="/category/clothing" 
+              href="/category/women" 
               className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-violet-600 hover:bg-violet-700 transition-colors"
             >
-              Shop Now
+              Shop Women
             </a>
             <a 
-              href="/account" 
+              href="/category/men" 
               className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 transition-colors"
             >
-              My Account
+              Shop Men
             </a>
           </div>
         </div>
