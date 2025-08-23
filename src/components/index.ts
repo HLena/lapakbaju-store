@@ -9,6 +9,7 @@ export { default as FilterSection } from "./ui/filter/FilterSection";
 export { default as ColorSelector } from "./ui/filter/ColorSelector";
 export { default as SizesSelector } from "./ui/filter/SizesSelector";
 export { default as Title } from "./ui/title/Title";
+export { default as CategoryNavigation } from "./ui/CategoryNavigation";
 
 export { default as CardProduct } from "./product/CardProduct";
 export { default as ImageSlider } from "./product/ImageSlider";
