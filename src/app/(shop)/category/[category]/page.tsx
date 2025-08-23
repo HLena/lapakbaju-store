@@ -1,5 +1,7 @@
+import { notFound } from 'next/navigation';
 import { CardProduct, Pagination, Title } from '@/components';
 import { Product } from '@/interfaces';
+import { getCategoryBySlug, isValidCategory } from '@/config/categories';
 
 const products: Product[] = [
   {
@@ -198,16 +200,47 @@ const Page = async ({ params, searchParams }: PageProps) => {
   const { category } = await params;
   const { page } = await searchParams;
 
+  // Validate category slug
+  if (!isValidCategory(category)) {
+    notFound(); // This will show the not-found.tsx page
+  }
+
+  // Get category details
+  const categoryDetails = getCategoryBySlug(category);
+  if (!categoryDetails) {
+    notFound();
+  }
+
   return (
-    <div className="min-h-screen m-auto">
+    <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header with Title and Filter Button */}
         <div className="mb-8">
           <Title 
-            title={category} 
-            subtitle={`Discover our ${category} collection`}
+            title={categoryDetails.name} 
+            subtitle={categoryDetails.description}
             showFilterButton={true}
           />
+        </div>
+
+        {/* Category Info */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-gray-600 text-sm">
+                {products.length} products found in {categoryDetails.name}
+              </p>
+            </div>
+            {categoryDetails.image && (
+              <div className="w-16 h-16 rounded-lg overflow-hidden">
+                <img 
+                  src={categoryDetails.image} 
+                  alt={categoryDetails.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Products Grid */}
