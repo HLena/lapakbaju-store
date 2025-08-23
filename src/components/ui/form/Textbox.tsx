@@ -31,7 +31,7 @@ const Textbox = ({
         onChange={onChange} 
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        className={`w-full capitalize text-gray-900 p-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500 transition-colors ${className}`}
+        className={`w-full capitalize text-gray-900 py-2 px-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500 transition-colors ${className}`}
       />
       <label
         className={`absolute left-3 text-gray-500 transition-all duration-200 

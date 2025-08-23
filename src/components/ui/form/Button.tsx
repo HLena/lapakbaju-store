@@ -20,7 +20,7 @@ const Button = ({
   size = "md"
 }: Props) => {
 
-  const baseClasses = "inline-flex items-center justify-center font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2"
+  const baseClasses = "leading-6.5 inline-flex items-center justify-center font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2"
   
   const variantClasses = {
     primary: "bg-violet-600 text-white hover:bg-violet-700 focus:ring-violet-500",

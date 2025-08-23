@@ -17,44 +17,53 @@ const colors = [
 ];
 
 interface Props {
-  selectedColor?: string 
+  selectedColor?: string;
+  onColorChange?: (color: string) => void;
 }
 
-const ColorSelector = ({ selectedColor = "" }: Props) => {
-
+const ColorSelector = ({ selectedColor = "", onColorChange }: Props) => {
   const [currentColor, setCurrentColor] = useState(selectedColor);
 
+  const handleColorSelect = (colorName: string) => {
+    setCurrentColor(colorName);
+    onColorChange?.(colorName);
+  };
+
   return (
-    <div className="flex flex-wrap gap-3">
+    <div className="flex flex-wrap gap-4">
       {
         colors.map(color => (
-          <div
+          <button
             key={color.hex} 
-            className="flex flex-col items-center cursor-pointer">
+            onClick={() => handleColorSelect(color.name)}
+            className="flex flex-col items-center cursor-pointer group"
+            aria-label={`Select color ${color.name}`}
+          >
             <div 
-              key={color.name} 
-              onClick={ () => setCurrentColor(color.name)}
-              className={
-                clsx(
-                  "size-8 rounded-xl border-1 border-gray-100",
-                  color.name == currentColor && "border-2 border-gray-600"
-                )
-              }
+              className={clsx(
+                "size-10 rounded-full border-2 transition-all duration-200 shadow-sm",
+                "hover:scale-110 hover:shadow-md",
+                currentColor === color.name 
+                  ? "border-violet-600 ring-2 ring-violet-200" 
+                  : "border-gray-200 hover:border-gray-300"
+              )}
               style={{ backgroundColor: color.hex }}
             />
-            <small 
-              className={
-                clsx(
-                  "text-gray-400 text-[10px] mt-2",
-                  color.name == currentColor && "font-semibold text-gray-600"
-                )
-              }
-            >{color.name}</small>
-          </div>
+            <span 
+              className={clsx(
+                "text-xs mt-2 transition-colors duration-200",
+                currentColor === color.name 
+                  ? "font-semibold text-violet-600" 
+                  : "text-gray-500 group-hover:text-gray-700"
+              )}
+            >
+              {color.name}
+            </span>
+          </button>
         ))
       }
     </div>
   )
 }
 
-export default ColorSelector
+export default ColorSelector;

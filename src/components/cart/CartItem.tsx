@@ -22,7 +22,7 @@ const ShoppinCartItem = ({
   onRemove
 }: ShoppinCartItemProps) => {
   return (
-    <div className="flex items-start gap-4 p-4 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors bg-white">
+    <div className="flex items-start gap-4 p-4 border border-gray-200 rounded-xl  transition-colors bg-white">
       <div className="w-28 h-28 relative overflow-hidden rounded-lg flex-shrink-0">
         <Image 
           src={image}
@@ -33,9 +33,9 @@ const ShoppinCartItem = ({
         />
       </div>
       
-      <div className="flex-1">
-        <div className="flex justify-between items-start mb-3">
-          <h4 className="font-medium text-gray-900 text-sm leading-tight">
+      <div className="flex-1 space-y-2">
+        <div className="flex justify-between items-start ">
+          <h4 className="font-medium text-gray-900 text-md leading-tight">
             {name}
           </h4>
           <button 
@@ -47,11 +47,11 @@ const ShoppinCartItem = ({
           </button>
         </div>
         
-        <p className="text-sm text-gray-500 mb-4">
+        <p className="text-sm text-gray-500 ">
           {color} • Size {size}
         </p>
         
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center ">
           <QuantitySelector quantity={quantity} />
           <div className="text-right">
             <p className="font-medium text-gray-900 text-sm">${price.toFixed(2)}</p>
