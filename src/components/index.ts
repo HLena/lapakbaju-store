@@ -13,6 +13,7 @@ export { default as Title } from "./ui/title/Title";
 export { default as CardProduct } from "./product/CardProduct";
 export { default as ImageSlider } from "./product/ImageSlider";
 export { default as QuantitySelector } from "./product/QuantitySelector";
+export { default as AddToCartButton } from "./product/AddToCartButton";
 export { default as Subtitle } from "./cart/Subtitle";
 export { default as SummaryOrder } from "./cart/SummaryOrder";
 

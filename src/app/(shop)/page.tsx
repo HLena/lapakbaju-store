@@ -2,12 +2,12 @@ import { Title } from '@/components';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen m-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-8">
-          <Title title="Welcome to LapakBaju Store" />
-          <p className="text-gray-600 mt-2">Discover the latest fashion trends and styles</p>
+        <div className="mb-8 text-center">
+          <Title title="Welcome to LapakBaju Store" className='text-center' subtitle='Discover the latest fashion trends and styles'/>
+          {/* <p className="text-gray-600 mt-2">Discover the latest fashion trends and styles</p> */}
         </div>
 
         {/* Main Content */}

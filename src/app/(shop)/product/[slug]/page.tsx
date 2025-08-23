@@ -4,7 +4,8 @@ import { LuMessageCircleMore } from "react-icons/lu";
 import { CiBoxes } from "react-icons/ci";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { CiShoppingTag } from "react-icons/ci";
-import { ColorSelector, ImageSlider, QuantitySelector, SizesSelector } from "@/components";
+import { FiShoppingCart } from "react-icons/fi";
+import { ColorSelector, ImageSlider, QuantitySelector, SizesSelector, Title, AddToCartButton } from "@/components";
 
 interface ProductPageProps {
   params:  Promise<{ slug: string}>,
@@ -18,65 +19,114 @@ const images = [
 ]
 
 const ProductPage = async ({ params, searchParams }: ProductPageProps) => {
-
-
-
   return (
-    <div className='grow flex flex-col lg:flex-row'>
-      
-      <ImageSlider images={images}/>
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            
+            {/* Image Slider */}
+            <div className="order-2 lg:order-1">
+              <ImageSlider images={images}/>
+            </div>
 
-      <div className="flex-1/2 py-5 px-10">
-        <p className="text-gray-400 text-sm">
-          Shop / Wowen / Shirt
-        </p>
-        <h2 className="text-gray-800 text-2xl my-5">
-          Raven Top With <br />
-          Colored Leaves Design
-        </h2>
+            {/* Product Details */}
+            <div className="order-1 lg:order-2 space-y-6">
+              {/* Breadcrumb */}
+              <nav className="text-sm text-gray-500">
+                <ol className="flex items-center space-x-2">
+                  <li><a href="/" className="hover:text-violet-600 transition-colors">Shop</a></li>
+                  <li>/</li>
+                  <li><a href="/category/women" className="hover:text-violet-600 transition-colors">Women</a></li>
+                  <li>/</li>
+                  <li><span className="text-gray-400">Shirt</span></li>
+                </ol>
+              </nav>
 
-        <p className="text-gray-500 my-4">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati magni sequi adipisci quo animi ullam eos illum repellendus ipsam beatae dignissimos praesentium excepturi minima, est odio dolor voluptas. Quisquam, fugit!</p>
+              {/* Product Title */}
+              <Title 
+                title="Raven Top With Colored Leaves Design"
+                subtitle="Elegant and comfortable blouse with beautiful leaf pattern"
+                className="text-left"
+              />
 
-        {/* rating  and  comments */}
-        <div className="flex gap-4">
-          <div className="text-amber-400 flex gap-2 items-center">
-            <FaStar />
-            <FaStar />
-            <FaStar />
-            <FaStar />
-            <FaStar />
-            <span className="text-gray-400 text-sm">4.5</span>
+              {/* Rating and Reviews */}
+              <div className="flex items-center gap-6">
+                <div className="flex items-center gap-2">
+                  <div className="flex text-amber-400">
+                    {[...Array(5)].map((_, i) => (
+                      <FaStar key={i} className="w-5 h-5" />
+                    ))}
+                  </div>
+                  <span className="text-gray-600 font-medium">4.5</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-500">
+                  <LuMessageCircleMore className="w-5 h-5" />
+                  <span className="text-sm">120 reviews</span>
+                </div>
+              </div>
+
+              {/* Price */}
+              <div className="text-3xl font-bold text-gray-900">
+                $65.00
+              </div>
+
+              {/* Size Selection */}
+              <div className="space-y-3">
+                <h3 className="text-lg font-semibold text-gray-900">Select Size</h3>
+                <SizesSelector selectedSize="S"/>
+              </div>
+
+              {/* Color Selection */}
+              <div className="space-y-3">
+                <h3 className="text-lg font-semibold text-gray-900">Available Colors</h3>
+                <ColorSelector/>
+              </div>
+
+              {/* Quantity and Add to Cart */}
+              <div className="flex items-center gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-700">Quantity</label>
+                  <QuantitySelector quantity={1} />
+                </div>
+                <AddToCartButton className="flex-1" />
+              </div>
+
+              {/* Product Features */}
+              <div className="border-t border-gray-200 pt-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Product Features</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex items-center gap-3 text-gray-600">
+                    <CiCreditCard2 className="w-5 h-5 text-violet-600" />
+                    <span className="text-sm">Secure payment</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-gray-600">
+                    <CiShoppingTag className="w-5 h-5 text-violet-600" />
+                    <span className="text-sm">Best price guarantee</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-gray-600">
+                    <LiaShippingFastSolid className="w-5 h-5 text-violet-600" />
+                    <span className="text-sm">Fast shipping</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-gray-600">
+                    <CiBoxes className="w-5 h-5 text-violet-600" />
+                    <span className="text-sm">Easy returns</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Description */}
+              <div className="border-t border-gray-200 pt-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Description</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  This elegant blouse features a beautiful colored leaves design that adds a touch of nature to your wardrobe. 
+                  Made from high-quality, breathable fabric, it provides both comfort and style. Perfect for casual outings, 
+                  office wear, or special occasions. The relaxed fit ensures all-day comfort while maintaining a sophisticated look.
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="flex gap-2 items-center text-gray-400">
-            <LuMessageCircleMore />
-            <span>120 comments</span>
-          </div>
         </div>
-
-        <p className="text-gray-900 text-md my-3">Select Size</p>
-        <SizesSelector selectedSize="S"/>
-        <p className="text-gray-900 text-md my-3">Colours Available</p>
-        <ColorSelector/>
-        <div className="flex gap-3 my-5">
-          {/* <button 
-            className="flex gap-2 items-center bg-violet-600 text-white  px-14 h-10 rounded-full"> 
-              <FiShoppingCart className="text-white" />
-              Add to Cart
-          </button> */}
-          <QuantitySelector quantity={0} />
-          <p className="border py-2 px-3 rounded-full text-gray-800 font-semibold border-gray-300"> $ 65.00 </p>
-        </div>
-
-        <hr />
-        <div className="grid grid-cols-2">
-          <p className="flex items-center my-3 text-gray-600 text-sm"> <CiCreditCard2 className="mr-3 text-xl"/> Secure payment</p>
-          <p className="flex items-center my-3 text-gray-600 text-sm"> <CiShoppingTag className="mr-3 text-xl"/> Secure payment</p>
-          <p className="flex items-center my-3 text-gray-600 text-sm"> <LiaShippingFastSolid className="mr-3 text-xl"/> Secure payment</p>
-          <p className="flex items-center my-3 text-gray-600 text-sm"> <CiBoxes className="mr-3 text-xl"/> Secure payment</p>
-        </div>
-
-
       </div>
     </div>
   )
