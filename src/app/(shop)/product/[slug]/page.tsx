@@ -25,14 +25,11 @@ const ProductPage = async ({ params, searchParams }: ProductPageProps) => {
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             
-            {/* Image Slider */}
-            <div className="order-2 lg:order-1">
+            <div>
               <ImageSlider images={images}/>
             </div>
 
-            {/* Product Details */}
-            <div className="order-1 lg:order-2 space-y-6">
-              {/* Breadcrumb */}
+            <div className="space-y-6">
               <nav className="text-sm text-gray-500">
                 <ol className="flex items-center space-x-2">
                   <li><a href="/" className="hover:text-violet-600 transition-colors">Shop</a></li>
@@ -43,7 +40,6 @@ const ProductPage = async ({ params, searchParams }: ProductPageProps) => {
                 </ol>
               </nav>
 
-              {/* Product Title */}
               <Title 
                 title="Raven Top With Colored Leaves Design"
                 subtitle="Elegant and comfortable blouse with beautiful leaf pattern"
@@ -71,13 +67,11 @@ const ProductPage = async ({ params, searchParams }: ProductPageProps) => {
                 $65.00
               </div>
 
-              {/* Size Selection */}
               <div className="space-y-3">
                 <h3 className="text-lg font-semibold text-gray-900">Select Size</h3>
                 <SizesSelector selectedSize="S"/>
               </div>
 
-              {/* Color Selection */}
               <div className="space-y-3">
                 <h3 className="text-lg font-semibold text-gray-900">Available Colors</h3>
                 <ColorSelector/>
@@ -85,10 +79,10 @@ const ProductPage = async ({ params, searchParams }: ProductPageProps) => {
 
               {/* Quantity and Add to Cart */}
               <div className="flex items-center gap-4">
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-700">Quantity</label>
+                {/* <div className="space-y-2"> */}
+                  {/* <label className="text-sm font-medium text-gray-700">Quantity</label> */}
                   <QuantitySelector quantity={1} />
-                </div>
+                {/* </div> */}
                 <AddToCartButton className="flex-1" />
               </div>
 
