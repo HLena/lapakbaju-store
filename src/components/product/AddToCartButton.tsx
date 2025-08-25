@@ -8,7 +8,6 @@ interface AddToCartButtonProps {
 
 const AddToCartButton = ({ className = "" }: AddToCartButtonProps) => {
   const handleAddToCart = () => {
-    // TODO: Implement add to cart logic
     console.log("Add to cart clicked");
   };
 
@@ -16,7 +15,7 @@ const AddToCartButton = ({ className = "" }: AddToCartButtonProps) => {
     <Button
       label="Add to Cart"
       variant="primary"
-      size="lg"
+      size="sm"
       className={className}
       onClick={handleAddToCart}
     />
