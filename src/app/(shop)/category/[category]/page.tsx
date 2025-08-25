@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { CardProduct, Pagination, Title } from '@/components';
+import { CardProduct, CategoryInfo, Title } from '@/components';
 import { Product } from '@/interfaces';
 import { getCategoryBySlug, isValidCategory } from '@/config/categories';
 
@@ -200,12 +200,10 @@ const Page = async ({ params, searchParams }: PageProps) => {
   const { category } = await params;
   const { page } = await searchParams;
 
-  // Validate category slug
   if (!isValidCategory(category)) {
     notFound(); // This will show the not-found.tsx page
   }
 
-  // Get category details
   const categoryDetails = getCategoryBySlug(category);
   if (!categoryDetails) {
     notFound();
@@ -214,50 +212,21 @@ const Page = async ({ params, searchParams }: PageProps) => {
   return (
     <div className="min-h-screen m-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header with Title and Filter Button */}
         <div className="mb-8">
           <Title 
             title={categoryDetails.name} 
             subtitle={categoryDetails.description}
-            showFilterButton={true}
           />
         </div>
 
-        {/* Category Info */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-gray-600 text-sm">
-                {products.length} products found in {categoryDetails.name}
-              </p>
-            </div>
-            {categoryDetails.image && (
-              <div className="w-16 h-16 rounded-lg overflow-hidden">
-                <img 
-                  src={categoryDetails.image} 
-                  alt={categoryDetails.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            )}
-          </div>
-        </div>
+        <CategoryInfo productsQuantity={products.length} category={categoryDetails.name}/>
 
-        {/* Products Grid */}
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mb-8">
           {products.map(product => (
             <CardProduct key={product.slug} {...product} />
           ))}
         </div>
 
-        {/* Pagination */}
-        <div className="flex justify-center">
-          <Pagination paginationDetails={{
-            total: products.length,
-            take: 10,
-            skip: 0
-          }} />
-        </div>
       </div>
     </div>
   )
