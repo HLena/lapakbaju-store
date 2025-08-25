@@ -12,7 +12,7 @@ export default function ShopLayout({
         <Navbar/>
       </header>
       <main className="min-h-screen pt-16 bg-gray-50">
-        <div className="flex max-w-7xl m-auto min-h-screen py-10">
+        <div className="py-4 flex max-w-7xl m-auto min-h-screen">
           { children }
         </div>
       </main>
