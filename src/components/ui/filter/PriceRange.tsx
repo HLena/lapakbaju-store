@@ -1,21 +1,49 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function PriceRange() {
-  const [min, setMin] = useState(50);
-  const [max, setMax] = useState(500);
+interface PriceRangeProps {
+  min?: number;
+  max?: number;
+  onRangeChange?: (min: number, max: number) => void;
+}
+
+export default function PriceRange({ 
+  min: initialMin = 50, 
+  max: initialMax = 500, 
+  onRangeChange 
+}: PriceRangeProps) {
+  const [min, setMin] = useState(initialMin);
+  const [max, setMax] = useState(initialMax);
 
   const minValue = 0;
   const maxValue = 1000;
 
+  // Update local state when props change
+  useEffect(() => {
+    setMin(initialMin);
+    setMax(initialMax);
+  }, [initialMin, initialMax]);
+
   const left = ((min - minValue) / (maxValue - minValue)) * 100;
   const right = ((max - minValue) / (maxValue - minValue)) * 100;
 
+  const handleMinChange = (value: number) => {
+    if (value < max) {
+      setMin(value);
+      onRangeChange?.(value, max);
+    }
+  };
+
+  const handleMaxChange = (value: number) => {
+    if (value > min) {
+      setMax(value);
+      onRangeChange?.(min, value);
+    }
+  };
 
   return (
     <>
-
       {/* Valores mostrados */}
       <div className="flex justify-between text-gray-600 text-sm mb-2">
         <span>${min}</span>
@@ -38,10 +66,7 @@ export default function PriceRange() {
           min={minValue}
           max={maxValue}
           value={min}
-          onChange={(e) => {
-            const value = Number(e.target.value);
-            if (value < max) setMin(value);
-          }}
+          onChange={(e) => handleMinChange(Number(e.target.value))}
           className="h-1 absolute w-full appearance-none bg-transparent pointer-events-none
             [&::-webkit-slider-thumb]:pointer-events-auto
             [&::-webkit-slider-thumb]:h-2 [&::-webkit-slider-thumb]:w-2 
@@ -58,10 +83,7 @@ export default function PriceRange() {
           min={minValue}
           max={maxValue}
           value={max}
-          onChange={(e) => {
-            const value = Number(e.target.value);
-            if (value > min) setMax(value);
-          }}
+          onChange={(e) => handleMaxChange(Number(e.target.value))}
           className="h-1 absolute w-full appearance-none bg-transparent pointer-events-none
             [&::-webkit-slider-thumb]:pointer-events-auto
             [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 
