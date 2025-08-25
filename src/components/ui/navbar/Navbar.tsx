@@ -1,64 +1,53 @@
 "use client";
 
-import SearchBar from './SearchBar';
 import NabvarMenu from './NavbarMenu';
 import { FiShoppingCart } from "react-icons/fi";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Navigation from "./Navigation";
-import { BiMenuAltLeft } from 'react-icons/bi';
 import { AnimatePresence } from 'motion/react';
-
-const menuOptions = [
-  {
-    name: 'women',
-    path: '/category/women'
-  },
-  {
-    name: 'men',
-    path:  '/category/men'
-  },
-  {
-    name: 'children',
-    path:  '/category/children'
-  }
-]
+import { CiMenuBurger } from 'react-icons/ci';
+import Sidebar from '../sidebar/Sidebar';
+import { VALID_CATEGORIES } from '@/config/categories';
 
 const Navbar = () => {
 
-  const [showNavbarMenu, setShowNavbarMenu] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const toggleNavbarMenu = () => {
-    setShowNavbarMenu(prevState => !prevState);
+  const onToggleSidebar = () => {
+    setSidebarOpen(prevState => !prevState);
   };
 
 
   return (
       <div
-        className="fixed top-0 right-0 left-0 w-full h-16 bg-white flex justify-between items-center py-2 px-3 gap-3 border-b z-100"
+        className="fixed top-0 right-0 left-0 w-full h-16 bg-white flex justify-between items-center py-2 px-6 gap-3 border-b"
       >
-        <div className="flex text-3xl text-purple-700 font-bold">
-          <BiMenuAltLeft onClick={toggleNavbarMenu} className='md:hidden'/>
+        <div className="flex text-3xl text-violet-600 font-bold">
+          <button
+            type="button"
+            className="-m-2.5 p-2.5 text-gray-700 lg:hidden"
+            onClick={ onToggleSidebar }
+          >
+            <CiMenuBurger className="h-6 w-6" />
+          </button>
+          
           <Link href="/" className="ml-4">
-            <Image src={"/images/logo.png"} alt="logo" height={140} width={140}/>
+            <div className='flex gap-2'>
+              <Image src="/images/logo-violet.png" alt="logo" height={40} width={40}/>
+              <span className=''>Borcelle</span>
+            </div>
           </Link>
         </div>
-
-        {/* <SearchBar/> */}
-        {!showNavbarMenu && <Navigation menu={menuOptions}/>}
+    
+        <Navigation options={VALID_CATEGORIES}/>
         
-
-        {/* <div className='flex gap-4 items-center text-sm'>
-          <Link href="/auth/register" className='text-gray-500 hidden lg:block'>Sign up</Link>
-          <Link
-            href="/auth/login"
-            className="bg-purple-700 px-5 py-2 rounded-full cursor-pointer font-regular">
-            Log in
-          </Link>
-        </div> */}
         <AnimatePresence>
-          {showNavbarMenu && <NabvarMenu menu={menuOptions} toggleNavbar={toggleNavbarMenu}/>}
+          {sidebarOpen && 
+            <Sidebar  onToggleSidebar={ onToggleSidebar }>
+              <NabvarMenu options={VALID_CATEGORIES}/>
+            </Sidebar>}
         </AnimatePresence>
 
         <div className='flex gap-3 text-violet-700 text-2xl items-center'>

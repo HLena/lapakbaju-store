@@ -1,22 +1,20 @@
+import { Category } from "@/config/categories"
 import Link from "next/link"
 
-interface Props{
-  menu: {
-    name: string,
-    path: string
-  }[]
+interface NavigationProps{
+  options: Category []
 }
 
-const Navigation = ({menu}: Props) => {
+const Navigation = ({ options }: NavigationProps) => {
   return (
-    <nav className='flex-row capitalize hidden md:flex text-sm'>
+    <nav className='capitalize hidden lg:flex lg:flex-row '>
         {
-          menu.map((m, i) => (
+          options.map((option, i) => (
             <Link 
-              key={i}
-              href={m.path}
+              key={option.slug}
+              href={`/category/${option.slug}`}
               className="p-2 text-gray-600 cursor-pointer hover:font-semibold"
-            >{m.name}
+            >{option.name}
             </Link>
           ))
         }
