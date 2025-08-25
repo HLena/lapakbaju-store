@@ -13,7 +13,7 @@ const Pagination = ({paginationDetails}: PaginationProp) => {
   const numberPages = Math.ceil(total / take);
   const pages = Array.from({length: numberPages}, (_, i) => i +1 );
   return (
-    <div className="flex gap-4 text-gray-700 w-fit m-auto">
+    <div className="flex gap-4 text-gray-600 w-fit">
       <button 
         className="cursor-pointer bg-gray-100 rounded-full size-8 text-2xl text-center flex items-center justify-center hover:bg-violet-700 hover:text-white">
         <MdKeyboardArrowLeft />
