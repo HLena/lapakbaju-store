@@ -1,14 +1,17 @@
 {
-  "name": "lapakbaju-store",
+  "name": "borcelle-store",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "ts-node src/seed/database.ts"
   },
   "dependencies": {
+    "@prisma/client": "^6.14.0",
+    "@prisma/extension-accelerate": "^2.0.2",
     "clsx": "^2.1.1",
     "motion": "^12.23.12",
     "next": "15.4.6",
@@ -24,8 +27,11 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.4.6",
+    "prisma": "^6.14.0",
     "react-icons": "^5.5.0",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.5",
     "typescript": "^5"
   }
 }
