@@ -4,8 +4,10 @@ import { LuMessageCircleMore } from "react-icons/lu";
 import { CiBoxes } from "react-icons/ci";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { CiShoppingTag } from "react-icons/ci";
-import { FiShoppingCart } from "react-icons/fi";
 import { ColorSelector, ImageSlider, QuantitySelector, SizesSelector, Title, AddToCartButton } from "@/components";
+import { getProductDetails } from "@/actions";
+import Link from "next/link";
+
 
 interface ProductPageProps {
   params:  Promise<{ slug: string}>,
@@ -19,6 +21,11 @@ const images = [
 ]
 
 const ProductPage = async ({ params, searchParams }: ProductPageProps) => {
+
+  const { slug } = await params;
+  const product = await getProductDetails(slug);
+  // const { Pro} = product;
+
   return (
     <div className="min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -26,23 +33,22 @@ const ProductPage = async ({ params, searchParams }: ProductPageProps) => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             
             <div>
-              <ImageSlider images={images}/>
+              <ImageSlider images={product?.ProductImage ?? []}/>
             </div>
 
             <div className="space-y-6">
               <nav className="text-sm text-gray-500">
                 <ol className="flex items-center space-x-2">
-                  <li><a href="/" className="hover:text-violet-600 transition-colors">Shop</a></li>
+                  <li><Link href="/" className="hover:text-violet-600 transition-colors capitalize">Shop</Link></li>
                   <li>/</li>
-                  <li><a href="/category/women" className="hover:text-violet-600 transition-colors">Women</a></li>
+                  <li><Link href={`/category/${product?.gender}`} className="hover:text-violet-600 transition-colors capitalize">{product?.gender}</Link></li>
                   <li>/</li>
-                  <li><span className="text-gray-400">Shirt</span></li>
+                  <li><span className="text-gray-400 capitalize">{product?.tags[0]}</span></li>
                 </ol>
               </nav>
 
               <Title 
-                title="Raven Top With Colored Leaves Design"
-                subtitle="Elegant and comfortable blouse with beautiful leaf pattern"
+                title={product?.title}
                 className="text-left"
               />
 
@@ -64,12 +70,12 @@ const ProductPage = async ({ params, searchParams }: ProductPageProps) => {
 
               {/* Price */}
               <div className="text-3xl font-bold text-gray-900">
-                $65.00
+                ${product?.price}
               </div>
 
               <div className="space-y-3">
                 <h3 className="text-lg font-semibold text-gray-900">Select Size</h3>
-                <SizesSelector selectedSize="S"/>
+                <SizesSelector sizes={product?.sizes}/>
               </div>
 
               <div className="space-y-3">
@@ -79,10 +85,7 @@ const ProductPage = async ({ params, searchParams }: ProductPageProps) => {
 
               {/* Quantity and Add to Cart */}
               <div className="flex items-center gap-4">
-                {/* <div className="space-y-2"> */}
-                  {/* <label className="text-sm font-medium text-gray-700">Quantity</label> */}
                   <QuantitySelector quantity={1} />
-                {/* </div> */}
                 <AddToCartButton className="flex-1" />
               </div>
 
@@ -113,9 +116,7 @@ const ProductPage = async ({ params, searchParams }: ProductPageProps) => {
               <div className="border-t border-gray-200 pt-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">Description</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  This elegant blouse features a beautiful colored leaves design that adds a touch of nature to your wardrobe. 
-                  Made from high-quality, breathable fabric, it provides both comfort and style. Perfect for casual outings, 
-                  office wear, or special occasions. The relaxed fit ensures all-day comfort while maintaining a sophisticated look.
+                  { product?.description }
                 </p>
               </div>
             </div>
