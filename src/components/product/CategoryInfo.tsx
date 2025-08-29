@@ -6,10 +6,11 @@ import { useUIStore } from "@/store";
 
 interface CategoryInfoProps {
   category: string,
+  children: React.ReactNode,
   productsQuantity: number
 }
 
-const CategoryInfo = ({ productsQuantity, category }: CategoryInfoProps) => {
+const CategoryInfo = ({ category, children, productsQuantity }: CategoryInfoProps) => {
 
   const openFilterPanel = useUIStore( state => state.openFilterPanel);
   
@@ -27,11 +28,7 @@ const CategoryInfo = ({ productsQuantity, category }: CategoryInfoProps) => {
         <GiSettingsKnobs/>
         Filter
       </button>
-      <Pagination paginationDetails={{
-        total: productsQuantity,
-        take: 10,
-        skip: 0
-      }} />
+      { children }
     </div>
   </div>
   )

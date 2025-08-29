@@ -9,7 +9,7 @@ const CardProduct = ({title, images, price, slug }: Product) => {
     <Link href={`/product/${slug}`}>
       <div className='flex-1 bg-white rounded-xl border shadow-md'>
         <div className='flex justify-center bg-gray-100 rounded-t-xl'>
-          <Image src="/images/products/black-jacket.webp" alt='black-jacket' width={200} height={200}/>
+          <Image src={`/products/${images[0]}`} alt='black-jacket' width={200} height={200}/>
         </div>
         <div className='p-3'>
           <p className='text-gray-600 font-semibold text-sm capitalize'>{title}</p>

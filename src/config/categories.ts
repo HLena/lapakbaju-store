@@ -22,32 +22,18 @@ export const VALID_CATEGORIES: Category[] = [
     productCount: 38
   },
   {
-    slug: "shoes",
-    name: "Shoes",
+    slug: "kid",
+    name: "Kid",
     description: "Comfortable and trendy footwear",
     image: "/images/categories/shoes.jpg",
     productCount: 22
   },
   {
-    slug: "accessories",
-    name: "Accessories",
+    slug: "unisex",
+    name: "Unisex",
     description: "Complete your look with our accessories",
     image: "/images/categories/accessories.jpg",
     productCount: 31
-  },
-  {
-    slug: "bags",
-    name: "Bags",
-    description: "Stylish bags for every occasion",
-    image: "/images/categories/bags.jpg",
-    productCount: 18
-  },
-  {
-    slug: "jewelry",
-    name: "Jewelry",
-    description: "Elegant jewelry to enhance your style",
-    image: "/images/categories/jewelry.jpg",
-    productCount: 25
   }
 ];
 
