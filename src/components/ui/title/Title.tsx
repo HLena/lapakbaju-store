@@ -1,12 +1,12 @@
 'use client';
 
 interface TitleProps {
-  title: string;
+  title?: string;
   subtitle?: string;
   className?: string;
 }
 
-const Title = ({ title, subtitle, className = "" }: TitleProps) => {
+const Title = ({ title = "", subtitle, className = "" }: TitleProps) => {
   
   return (
     <div className={`flex-1 ${className}`}>
